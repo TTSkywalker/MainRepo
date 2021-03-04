@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="630.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.DirectionViewController">
+   <children>
+      <GridPane fx:id="processGrid" gridLinesVisible="true" layoutX="340.0" layoutY="34.0" prefHeight="590.0" prefWidth="717.0" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="20.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="210.0" minWidth="10.0" prefWidth="141.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="359.0" minWidth="10.0" prefWidth="331.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="359.0" minWidth="10.0" prefWidth="232.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="随机创建进程" GridPane.rowIndex="1" />
+            <Label text="点击“开始随机创建进程”按钮" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="停止随机创建进程" GridPane.rowIndex="2" />
+            <Label text="停止处理进程" GridPane.rowIndex="4" />
+            <Label text="删除指定进程" GridPane.rowIndex="5" />
+            <Label text="进程创建自动续杯" GridPane.rowIndex="6" />
+            <Label text="在“内存分配策略”下方点击单选所需策略" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Label text="点击“停止处理进程”按钮" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="填写要删除的进程index，点击“删除”" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label text="勾选“有空间自动生成进程”" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label text="目的" />
+            <Label text="用户操作" GridPane.columnIndex="1" />
+            <Label text="点击“停止随机创建进程”按钮" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="开始处理进程" GridPane.rowIndex="3" />
+            <Label text="点击“开始处理进程”按钮" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="进程运行自动续杯" GridPane.rowIndex="7" />
+            <Label text="勾选“有进程自动开始处理”" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label text="内存分配策略选择" GridPane.rowIndex="8" />
+            <Label text="进程调度策略选择" GridPane.rowIndex="9" />
+            <Label text="在“进程调度策略”下方点击单选所需策略" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Label text="备注" GridPane.columnIndex="2" />
+            <Label text="此按钮在开始随机创建进程后出现" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label text="此按钮在开始处理进程后出现" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label text="进程满10个或内存不足时自动停止" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label text="无未完成进程时自动停止" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label text="持续尝试创建进程（不自动停止）" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <Label text="持续尝试运行进程（不自动停止）" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+         </children>
+      </GridPane>
+      <RadioButton fx:id="processDir" layoutX="34.0" layoutY="66.0" mnemonicParsing="false" onAction="#changeAction" selected="true" text="调度系统说明书" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <toggleGroup>
+            <ToggleGroup fx:id="DIR" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="fileDir" layoutX="34.0" layoutY="93.0" mnemonicParsing="false" onAction="#changeAction" text="文件系统说明书" toggleGroup="$DIR" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="50.0" />
+      <RadioButton fx:id="cmdDir" layoutX="34.0" layoutY="123.0" mnemonicParsing="false" onAction="#changeAction" text="CMD说明书" toggleGroup="$DIR" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="80.0" />
+      <GridPane fx:id="cmdGrid" gridLinesVisible="true" layoutX="59.0" layoutY="616.0" prefHeight="365.0" prefWidth="717.0" visible="false" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="20.0">
+         <children>
+            <Label text="createTxt path" GridPane.rowIndex="1" />
+            <Label text="新建txt文件，path只需要到文件目录，文件名将自动生成" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="createE path" GridPane.rowIndex="2" />
+            <Label text="delete path" GridPane.rowIndex="4" />
+            <Label text="copy path" GridPane.rowIndex="5" />
+            <Label text="删除文件，参数path需具体到被删除的文件名" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="复制文件，参数path需具体到被复制的文件名" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label text="命令" />
+            <Label text="功能" GridPane.columnIndex="1" />
+            <Label text="新建可执行文件，path只需要到文件目录，文件名将自动生成Path" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="mkdir path" GridPane.rowIndex="3" />
+            <Label text="新建目录，path只需要到文件目录（在目录A下新建目录B，路径只需到目录A）" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="例子" GridPane.columnIndex="2" />
+            <Label text="createE C:\文件夹1\文件夹2" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label text="delete C:\资料\文件A.txt" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label text="createTxt C:\123" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label text="mkdir C:\123" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label text="copy C:\文件夹1\文件1.e" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="210.0" minWidth="10.0" prefWidth="141.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="359.0" minWidth="10.0" prefWidth="331.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="359.0" minWidth="10.0" prefWidth="232.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+      <Text fx:id="fileGrid" layoutX="59.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="文件系统操作较为复杂，请转到文件系统页面，鼠标悬浮于组件上方即可查看对应说明" visible="false" wrappingWidth="319.0" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="20.0">
+         <font>
+            <Font size="15.0" />
+         </font></Text>
+      <Text fx:id="cmdText" fill="RED" layoutX="86.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="在文件系统“当前目录”处输入cmd并回车即可打开CMD窗口" visible="false" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="400.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

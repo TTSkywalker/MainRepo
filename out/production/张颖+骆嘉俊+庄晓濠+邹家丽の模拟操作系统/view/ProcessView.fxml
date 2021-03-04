@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProcessViewController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#39393812" height="408.0" layoutX="440.0" layoutY="72.0" stroke="TRANSPARENT" strokeType="INSIDE" width="186.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff2212" height="793.0" layoutX="12.0" layoutY="14.0" stroke="TRANSPARENT" strokeType="INSIDE" width="693.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <HBox alignment="CENTER_LEFT" layoutX="26.0" layoutY="120.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="130.0">
+         <children>
+            <Button fx:id="delbutton" layoutX="19.0" layoutY="95.0" mnemonicParsing="false" onAction="#delAction" text="删除">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Label layoutX="75.0" layoutY="99.0" text="第">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <TextField fx:id="delindex" layoutX="91.0" layoutY="95.0" prefHeight="30.0" prefWidth="31.0" />
+            <Label layoutX="118.0" layoutY="99.0" text="个进程">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+         </children>
+      </HBox>
+      <Button fx:id="randomgo" layoutX="23.0" layoutY="36.0" mnemonicParsing="false" onAction="#randomCreateAction" text="开始随机创建进程" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="30.0">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button fx:id="runprocess" layoutX="26.0" layoutY="78.0" mnemonicParsing="false" onAction="#runProcessAction" text="开始处理进程" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="80.0">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <VBox layoutX="10.0" layoutY="329.0" prefHeight="86.0" prefWidth="157.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="370.0">
+         <children>
+            <Text fx:id="systime" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="42.728515625">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="-27.0" left="95.0" />
+               </VBox.margin>
+            </Text>
+            <Text layoutX="276.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="系统时间:_______s">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <VBox layoutX="277.0" layoutY="65.0">
+               <children>
+                  <HBox alignment="CENTER" layoutX="320.0" layoutY="441.0">
+                     <children>
+                        <Label layoutX="320.0" layoutY="441.0" text="X=" textFill="#ff00bb">
+                           <font>
+                              <Font size="42.0" />
+                           </font>
+                        </Label>
+                        <Text fill="#00ff8c" layoutX="386.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" fx:id="xvar">
+                           <font>
+                              <Font size="41.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox layoutX="24.0" layoutY="228.0" prefHeight="104.0" prefWidth="94.0" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="250.0">
+         <children>
+            <Label layoutX="24.0" layoutY="228.0" prefHeight="31.0" prefWidth="102.0" text="内存分配策略" textFill="RED">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <RadioButton fx:id="wayff" layoutX="43.0" layoutY="247.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="83.0" selected="true" text="FF" textFill="RED">
+               <toggleGroup>
+                  <ToggleGroup fx:id="RA" />
+               </toggleGroup>
+               <VBox.margin>
+                  <Insets bottom="8.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font></RadioButton>
+            <RadioButton fx:id="waybf" layoutX="42.0" layoutY="271.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="83.0" text="BF" textFill="RED" toggleGroup="$RA">
+               <VBox.margin>
+                  <Insets bottom="8.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font></RadioButton>
+            <RadioButton fx:id="waywf" layoutX="41.0" layoutY="294.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="82.0" text="WF" textFill="RED" toggleGroup="$RA">
+               <font>
+                  <Font size="14.0" />
+               </font></RadioButton>
+         </children>
+      </VBox>
+      <CheckBox fx:id="autocreate" layoutX="22.0" layoutY="162.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" text="有空间自动生成进程" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="180.0">
+         <font>
+            <Font size="14.0" />
+         </font></CheckBox>
+      <CheckBox fx:id="autoprocess" layoutX="22.0" layoutY="197.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="157.0" text="有进程自动开始处理" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="210.0">
+         <font>
+            <Font size="14.0" />
+         </font></CheckBox>
+      <Rectangle fx:id="ramarea" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="781.0" layoutX="623.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="250.0" AnchorPane.leftAnchor="650.0" AnchorPane.topAnchor="0.0" />
+      <TextArea fx:id="console" layoutX="20.0" layoutY="496.0" prefHeight="256.0" prefWidth="613.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="500.0" />
+      <Label layoutX="23.0" layoutY="479.0" text="Console" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="479.0" />
+      <VBox layoutX="350.0" AnchorPane.leftAnchor="440.0" AnchorPane.topAnchor="17.0">
+         <children>
+            <Label layoutX="514.0" layoutY="14.0" text="所有进程" />
+            <GridPane gridLinesVisible="true" layoutX="514.0" layoutY="29.0" prefHeight="447.0" prefWidth="186.0" AnchorPane.rightAnchor="285.0" AnchorPane.topAnchor="29.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="76.0" minWidth="10.0" prefWidth="51.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="10.0" prefWidth="43.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.0" minWidth="0.0" prefWidth="84.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label alignment="CENTER" prefHeight="20.0" prefWidth="43.0" text="进度" GridPane.columnIndex="1" />
+                  <Label alignment="CENTER" prefHeight="20.0" prefWidth="84.0" text="状态" GridPane.columnIndex="2" />
+                  <Text fx:id="propro0" strokeType="OUTSIDE" strokeWidth="0.0" text="0%" textAlignment="CENTER" wrappingWidth="40.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Text fx:id="propro1" strokeType="OUTSIDE" strokeWidth="0.0" text="0%" textAlignment="CENTER" wrappingWidth="40.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Text fx:id="propro2" strokeType="OUTSIDE" strokeWidth="0.0" text="0%" textAlignment="CENTER" wrappingWidth="40.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Text fx:id="propro3" strokeType="OUTSIDE" strokeWidth="0.0" text="0%" textAlignment="CENTER" wrappingWidth="40.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Text fx:id="propro4" strokeType="OUTSIDE" strokeWidth="0.0" text="0%" textAlignment="CENTER" wrappingWidth="40.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Text fx:id="propro5" strokeType="OUTSIDE" strokeWidth="0.0" text="0%" textAlignment="CENTER" wrappingWidth="40.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Text fx:id="propro6" strokeType="OUTSIDE" strokeWidth="0.0" text="0%" textAlignment="CENTER" wrappingWidth="40.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <Text fx:id="propro7" strokeType="OUTSIDE" strokeWidth="0.0" text="0%" textAlignment="CENTER" wrappingWidth="40.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <Text fx:id="propro8" strokeType="OUTSIDE" strokeWidth="0.0" text="0%" textAlignment="CENTER" wrappingWidth="40.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                  <Text fx:id="propro9" strokeType="OUTSIDE" strokeWidth="0.0" text="0%" textAlignment="CENTER" wrappingWidth="40.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                  <Text fx:id="prosta0" strokeType="OUTSIDE" strokeWidth="0.0" text="nothing" textAlignment="CENTER" wrappingWidth="80.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Text fx:id="prosta1" strokeType="OUTSIDE" strokeWidth="0.0" text="nothing" textAlignment="CENTER" wrappingWidth="80.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Text fx:id="prosta2" strokeType="OUTSIDE" strokeWidth="0.0" text="nothing" textAlignment="CENTER" wrappingWidth="80.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Text fx:id="prosta3" strokeType="OUTSIDE" strokeWidth="0.0" text="nothing" textAlignment="CENTER" wrappingWidth="80.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <Text fx:id="prosta4" strokeType="OUTSIDE" strokeWidth="0.0" text="nothing" textAlignment="CENTER" wrappingWidth="80.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                  <Text fx:id="prosta5" strokeType="OUTSIDE" strokeWidth="0.0" text="nothing" textAlignment="CENTER" wrappingWidth="80.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                  <Text fx:id="prosta6" strokeType="OUTSIDE" strokeWidth="0.0" text="nothing" textAlignment="CENTER" wrappingWidth="80.0" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                  <Text fx:id="prosta7" strokeType="OUTSIDE" strokeWidth="0.0" text="nothing" textAlignment="CENTER" wrappingWidth="80.0" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                  <Text fx:id="prosta8" strokeType="OUTSIDE" strokeWidth="0.0" text="nothing" textAlignment="CENTER" wrappingWidth="80.0" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+                  <Text fx:id="prosta9" strokeType="OUTSIDE" strokeWidth="0.0" text="nothing" textAlignment="CENTER" wrappingWidth="80.0" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+                  <Text fx:id="pid0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="50.0" GridPane.rowIndex="1" />
+                  <Text fx:id="pid1" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="50.0" GridPane.rowIndex="2" />
+                  <Text fx:id="pid2" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="50.0" GridPane.rowIndex="3" />
+                  <Text fx:id="pid3" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="50.0" GridPane.rowIndex="4" />
+                  <Text fx:id="pid4" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="50.0" GridPane.rowIndex="5" />
+                  <Text fx:id="pid5" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="50.0" GridPane.rowIndex="6" />
+                  <Text fx:id="pid6" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="50.0" GridPane.rowIndex="7" />
+                  <Text fx:id="pid7" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="50.0" GridPane.rowIndex="8" />
+                  <Text fx:id="pid8" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="50.0" GridPane.rowIndex="9" />
+                  <Text fx:id="pid9" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="50.0" GridPane.rowIndex="10" />
+                  <Label alignment="CENTER" prefHeight="20.0" prefWidth="52.0" text="PID" />
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+      <VBox layoutX="112.0" layoutY="230.0" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="250.0">
+         <children>
+            <Label layoutX="112.0" layoutY="230.0" prefHeight="31.0" prefWidth="92.0" text="进程调度策略" textFill="#00738a">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <RadioButton fx:id="wayfcfs" layoutX="124.0" layoutY="249.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="84.0" selected="true" text="FCFS" textFill="#017086">
+               <toggleGroup>
+                  <ToggleGroup fx:id="PS" />
+               </toggleGroup>
+               <VBox.margin>
+                  <Insets bottom="8.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="wayspf" layoutX="127.0" layoutY="273.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="82.0" text="SPF" textFill="#017086" toggleGroup="$PS">
+               <VBox.margin>
+                  <Insets bottom="8.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font></RadioButton>
+            <RadioButton fx:id="wayrr" layoutX="130.0" layoutY="296.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="81.0" selected="true" text="RR" textFill="#017086" toggleGroup="$PS">
+               <font>
+                  <Font size="14.0" />
+               </font></RadioButton>
+         </children>
+      </VBox>
+      <VBox layoutX="172.0" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="20.0">
+         <children>
+            <GridPane gridLinesVisible="true" layoutX="200.0" prefHeight="193.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="64.0" minWidth="10.0" prefWidth="62.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="120.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Text fill="#003cff" strokeType="OUTSIDE" strokeWidth="0.0" text="设备状态" textAlignment="CENTER" wrappingWidth="65.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
+                  <Text fill="#003cff" strokeType="OUTSIDE" strokeWidth="0.0" text="A0" textAlignment="CENTER" wrappingWidth="60.0" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
+                  <Text fill="#003cff" strokeType="OUTSIDE" strokeWidth="0.0" text="A1" textAlignment="CENTER" wrappingWidth="60.0" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
+                  <Text fill="#003cff" strokeType="OUTSIDE" strokeWidth="0.0" text="B0" textAlignment="CENTER" wrappingWidth="60.0" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
+                  <Text fill="#003cff" strokeType="OUTSIDE" strokeWidth="0.0" text="B1" textAlignment="CENTER" wrappingWidth="60.0" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
+                  <Text fill="#003cff" strokeType="OUTSIDE" strokeWidth="0.0" text="B2" textAlignment="CENTER" wrappingWidth="60.0" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
+                  <Text fill="#003cff" strokeType="OUTSIDE" strokeWidth="0.0" text="C0" textAlignment="CENTER" wrappingWidth="60.0" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
+                  <Text fill="#003cff" strokeType="OUTSIDE" strokeWidth="0.0" text="C1" textAlignment="CENTER" wrappingWidth="60.0" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
+                  <Text fill="#003cff" strokeType="OUTSIDE" strokeWidth="0.0" text="C2" textAlignment="CENTER" wrappingWidth="60.0" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
+                  <Text fx:id="statusa0" strokeType="OUTSIDE" strokeWidth="0.0" text="Free" textAlignment="CENTER" wrappingWidth="120.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
+                  <Text fx:id="statusa1" strokeType="OUTSIDE" strokeWidth="0.0" text="Free" textAlignment="CENTER" wrappingWidth="120.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
+                  <Text fx:id="statusb0" strokeType="OUTSIDE" strokeWidth="0.0" text="Free" textAlignment="CENTER" wrappingWidth="120.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
+                  <Text fx:id="statusb1" strokeType="OUTSIDE" strokeWidth="0.0" text="Free" textAlignment="CENTER" wrappingWidth="120.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
+                  <Text fx:id="statusb2" strokeType="OUTSIDE" strokeWidth="0.0" text="Free" textAlignment="CENTER" wrappingWidth="120.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
+                  <Text fx:id="statusc0" strokeType="OUTSIDE" strokeWidth="0.0" text="Free" textAlignment="CENTER" wrappingWidth="120.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
+                  <Text fx:id="statusc1" strokeType="OUTSIDE" strokeWidth="0.0" text="Free" textAlignment="CENTER" wrappingWidth="120.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
+                  <Text fx:id="statusc2" strokeType="OUTSIDE" strokeWidth="0.0" text="Free" textAlignment="CENTER" wrappingWidth="120.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
+               </children>
+            </GridPane>
+            <Label alignment="BOTTOM_LEFT" layoutX="200.0" layoutY="147.0" prefHeight="37.0" prefWidth="60.0" text="阻塞队列">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="8.0" />
+               </VBox.margin></Label>
+            <GridPane gridLinesVisible="true" layoutX="200.0" layoutY="162.0" prefHeight="136.0" prefWidth="192.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.0" minWidth="94.0" prefWidth="94.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="98.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label alignment="CENTER" prefHeight="20.0" prefWidth="88.0" text="阻塞进程号">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label alignment="CENTER" prefHeight="20.0" prefWidth="94.0" text="阻塞原因" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Text fx:id="blocked0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" visible="false" wrappingWidth="80.0" GridPane.rowIndex="1" />
+                  <Text fx:id="blockedReason0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" visible="false" wrappingWidth="80.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Text fx:id="blocked1" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" visible="false" wrappingWidth="80.0" GridPane.rowIndex="2" />
+                  <Text fx:id="blockedReason1" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" visible="false" wrappingWidth="80.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Text fx:id="blocked2" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" visible="false" wrappingWidth="80.0" GridPane.rowIndex="3" />
+                  <Text fx:id="blockedReason2" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" visible="false" wrappingWidth="80.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Text fx:id="blocked3" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" visible="false" wrappingWidth="80.0" GridPane.rowIndex="4" />
+                  <Text fx:id="blockedReason4" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" visible="false" wrappingWidth="80.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Text fx:id="blockedReason3" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" visible="false" wrappingWidth="80.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Text fx:id="blocked4" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" visible="false" wrappingWidth="80.0" GridPane.rowIndex="5" />
+               </children>
+            </GridPane>
+            <HBox alignment="BOTTOM_LEFT" layoutX="172.0" layoutY="257.0">
+               <children>
+                  <Label alignment="BOTTOM_LEFT" layoutX="319.0" layoutY="426.0" prefHeight="39.0" prefWidth="135.0" text="当前执行的指令是：">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Text fx:id="instructionname" layoutX="448.0" layoutY="441.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nothing" wrappingWidth="67.43310546875">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="-10.0" />
+                     </HBox.margin></Text>
+               </children>
+            </HBox>
+            <HBox layoutX="173.0" layoutY="304.0">
+               <children>
+                  <Label layoutX="24.0" layoutY="425.0" text="当前进程剩余时间片：">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Text fx:id="timePieceUI" layoutX="142.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="无">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
+               </children>
+            </HBox>
+            <HBox layoutX="173.0" layoutY="319.0">
+               <children>
+                  <Label layoutX="24.0" layoutY="451.0" text="运行中的进程：#">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Text fx:id="runningPID" layoutX="117.0" layoutY="463.0" strokeType="OUTSIDE" strokeWidth="0.0" text="无">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
